@@ -1,0 +1,583 @@
+import { TipEvent, PromoSaleEvent } from './tips-types';
+import { promotions } from './data';
+
+// Функция для получения мотивации официанта из настроек акции
+function getWaiterMotivation(promotionId: string, productId: string, quantity: number): number {
+  const promotion = promotions.find(p => p.id === promotionId);
+  if (!promotion) return 0;
+  
+  const motivation = promotion.motivations.find(m => m.productId === productId);
+  if (!motivation) return 0;
+  
+  // Официант получает 60% от общей мотивации, умноженной на количество
+  return Math.round(motivation.value * quantity * 0.6);
+}
+
+// Статические события чаевых и отзывов
+export const staticTipEvents: TipEvent[] = [
+  {
+    id: "tip_1",
+    type: "tip_with_review",
+    amount: 200,
+    guestName: "Иван Петров",
+    review: "Отличный сервис! Очень внимательный персонал.",
+    rating: 5,
+    date: "2025-09-09T20:15:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_2",
+    type: "tip_only",
+    amount: 150,
+    guestName: "Мария Сидорова",
+    date: "2025-09-09T19:30:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_3",
+    type: "review_only",
+    guestName: "Алексей Козлов",
+    review: "Очень вкусно, но долго ждали заказ.",
+    rating: 4,
+    date: "2025-09-09T18:45:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_4",
+    type: "tip_with_review",
+    amount: 120,
+    guestName: "Елена Волкова",
+    review: "Прекрасная атмосфера и качественная еда.",
+    rating: 5,
+    date: "2025-09-08T21:20:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_5",
+    type: "tip_only",
+    amount: 80,
+    guestName: "Дмитрий Соколов",
+    date: "2025-09-08T19:15:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_6",
+    type: "review_only",
+    guestName: "Ольга Морозова",
+    review: "Быстро обслужили, все понравилось.",
+    rating: 4,
+    date: "2025-09-08T17:30:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_7",
+    type: "tip_with_review",
+    amount: 250,
+    guestName: "Сергей Лебедев",
+    review: "Персонал очень дружелюбный и профессиональный.",
+    rating: 5,
+    date: "2025-09-07T22:10:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_8",
+    type: "tip_only",
+    amount: 180,
+    guestName: "Татьяна Козлова",
+    date: "2025-09-07T20:45:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_9",
+    type: "review_only",
+    guestName: "Андрей Новиков",
+    review: "Еда была холодная, но сервис хороший.",
+    rating: 3,
+    date: "2025-09-07T18:20:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_10",
+    type: "tip_with_review",
+    amount: 300,
+    guestName: "Наталья Федорова",
+    review: "Отличное место для семейного ужина.",
+    rating: 5,
+    date: "2025-09-06T21:30:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_11",
+    type: "tip_only",
+    amount: 110,
+    guestName: "Михаил Орлов",
+    date: "2025-09-06T19:00:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_12",
+    type: "review_only",
+    guestName: "Юлия Смирнова",
+    review: "Очень рекомендую, все на высшем уровне.",
+    rating: 5,
+    date: "2025-09-06T17:15:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_13",
+    type: "tip_with_review",
+    amount: 160,
+    guestName: "Владимир Кузнецов",
+    review: "Цены немного высокие, но качество оправдывает.",
+    rating: 4,
+    date: "2025-09-05T20:30:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_14",
+    type: "tip_only",
+    amount: 90,
+    guestName: "Анна Попова",
+    date: "2025-09-05T18:45:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_15",
+    type: "review_only",
+    guestName: "Николай Васильев",
+    review: "Уютная атмосфера, приятно провели время.",
+    rating: 4,
+    date: "2025-09-05T16:20:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_16",
+    type: "tip_with_review",
+    amount: 220,
+    guestName: "Екатерина Соколова",
+    review: "Обслуживание быстрое, еда вкусная.",
+    rating: 5,
+    date: "2025-09-04T21:00:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_17",
+    type: "tip_only",
+    amount: 130,
+    guestName: "Иван Петров",
+    date: "2025-09-04T19:30:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_18",
+    type: "review_only",
+    guestName: "Мария Сидорова",
+    review: "Персонал очень внимательный к деталям.",
+    rating: 5,
+    date: "2025-09-04T17:45:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_19",
+    type: "tip_with_review",
+    amount: 190,
+    guestName: "Алексей Козлов",
+    review: "Хорошее место для деловой встречи.",
+    rating: 4,
+    date: "2025-09-03T20:15:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_20",
+    type: "tip_only",
+    amount: 75,
+    guestName: "Елена Волкова",
+    date: "2025-09-03T18:30:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_21",
+    type: "review_only",
+    guestName: "Дмитрий Соколов",
+    review: "Очень понравилось, обязательно вернемся.",
+    rating: 5,
+    date: "2025-09-03T16:00:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_22",
+    type: "tip_with_review",
+    amount: 280,
+    guestName: "Ольга Морозова",
+    review: "Качественная еда и приятная атмосфера.",
+    rating: 5,
+    date: "2025-09-02T21:45:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_23",
+    type: "tip_only",
+    amount: 140,
+    guestName: "Сергей Лебедев",
+    date: "2025-09-02T19:15:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_24",
+    type: "review_only",
+    guestName: "Татьяна Козлова",
+    review: "Сервис на высоте, рекомендую всем.",
+    rating: 5,
+    date: "2025-09-02T17:30:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_25",
+    type: "tip_with_review",
+    amount: 210,
+    guestName: "Андрей Новиков",
+    review: "Отличный сервис! Очень внимательный персонал.",
+    rating: 5,
+    date: "2025-09-01T20:30:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_26",
+    type: "tip_only",
+    amount: 100,
+    guestName: "Наталья Федорова",
+    date: "2025-09-01T18:45:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_27",
+    type: "review_only",
+    guestName: "Михаил Орлов",
+    review: "Очень вкусно, но долго ждали заказ.",
+    rating: 4,
+    date: "2025-09-01T16:20:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_28",
+    type: "tip_with_review",
+    amount: 170,
+    guestName: "Юлия Смирнова",
+    review: "Прекрасная атмосфера и качественная еда.",
+    rating: 4,
+    date: "2025-08-31T21:00:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_29",
+    type: "tip_only",
+    amount: 120,
+    guestName: "Владимир Кузнецов",
+    date: "2025-08-31T19:30:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1"
+  },
+  {
+    id: "tip_30",
+    type: "review_only",
+    guestName: "Анна Попова",
+    review: "Быстро обслужили, все понравилось.",
+    rating: 4,
+    date: "2025-08-31T17:15:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1"
+  }
+];
+
+// Статические события продаж промо (берем из существующих данных)
+export const staticPromoSaleEvents: PromoSaleEvent[] = [
+  {
+    id: "promo_1",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p1",
+    productName: "Виски 12 лет",
+    motivation: { amount: getWaiterMotivation("pr1", "p1", 3), currency: "RUB" },
+    quantity: 3,
+    date: "2025-09-09T17:20:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1",
+    orderId: "s1757450817430_6bjhxunc9"
+  },
+  {
+    id: "promo_2",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p2",
+    productName: "Джин Премиум",
+    motivation: { amount: getWaiterMotivation("pr1", "p2", 4), currency: "RUB" },
+    quantity: 4,
+    date: "2025-09-09T16:45:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1",
+    orderId: "s1757450817430_fqs27z6fh"
+  },
+  {
+    id: "promo_3",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p3",
+    productName: "Вермут Классик",
+    motivation: { amount: getWaiterMotivation("pr1", "p3", 5), currency: "RUB" },
+    quantity: 5,
+    date: "2025-09-09T15:30:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1",
+    orderId: "s1757450817430_rqbw7r3te"
+  },
+  {
+    id: "promo_4",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p1",
+    productName: "Виски 12 лет",
+    motivation: { amount: getWaiterMotivation("pr1", "p1", 3), currency: "RUB" },
+    quantity: 2,
+    date: "2025-09-08T19:30:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1",
+    orderId: "s1757450817430_2xtjkf0w5"
+  },
+  {
+    id: "promo_5",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p2",
+    productName: "Джин Премиум",
+    motivation: { amount: getWaiterMotivation("pr1", "p2", 4), currency: "RUB" },
+    quantity: 3,
+    date: "2025-09-08T18:15:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1",
+    orderId: "s1757450817429_j3d1h041s"
+  },
+  {
+    id: "promo_6",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p3",
+    productName: "Вермут Классик",
+    motivation: { amount: getWaiterMotivation("pr1", "p3", 5), currency: "RUB" },
+    quantity: 4,
+    date: "2025-09-07T20:00:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1",
+    orderId: "s1757450817429_k4e2i152t"
+  },
+  {
+    id: "promo_7",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p1",
+    productName: "Виски 12 лет",
+    motivation: { amount: getWaiterMotivation("pr1", "p1", 3), currency: "RUB" },
+    quantity: 2,
+    date: "2025-09-07T18:45:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1",
+    orderId: "s1757450817429_l5f3j263u"
+  },
+  {
+    id: "promo_8",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p2",
+    productName: "Джин Премиум",
+    motivation: { amount: getWaiterMotivation("pr1", "p2", 4), currency: "RUB" },
+    quantity: 3,
+    date: "2025-09-06T21:30:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1",
+    orderId: "s1757450817429_m6g4k374v"
+  },
+  {
+    id: "promo_9",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p3",
+    productName: "Вермут Классик",
+    motivation: { amount: getWaiterMotivation("pr1", "p3", 5), currency: "RUB" },
+    quantity: 2,
+    date: "2025-09-06T19:15:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1",
+    orderId: "s1757450817429_n7h5l485w"
+  },
+  {
+    id: "promo_10",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p1",
+    productName: "Виски 12 лет",
+    motivation: { amount: getWaiterMotivation("pr1", "p1", 3), currency: "RUB" },
+    quantity: 2,
+    date: "2025-09-05T20:45:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1",
+    orderId: "s1757450817429_o8i6m596x"
+  },
+  {
+    id: "promo_11",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p2",
+    productName: "Джин Премиум",
+    motivation: { amount: getWaiterMotivation("pr1", "p2", 4), currency: "RUB" },
+    quantity: 3,
+    date: "2025-09-05T18:30:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1",
+    orderId: "s1757450817429_p9j7n607y"
+  },
+  {
+    id: "promo_12",
+    type: "promo_sale",
+    promotionId: "pr1",
+    promotionName: "Осенняя дегустация",
+    productId: "p3",
+    productName: "Вермут Классик",
+    motivation: { amount: getWaiterMotivation("pr1", "p3", 5), currency: "RUB" },
+    quantity: 2,
+    date: "2025-09-04T21:00:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1",
+    orderId: "s1757450817429_q0k8o718z"
+  },
+  // Продажи по завершенной акции pr4 "Летний коктейль-бар"
+  {
+    id: "promo_13",
+    type: "promo_sale",
+    promotionId: "pr4",
+    promotionName: "Летний коктейль-бар",
+    productId: "p2",
+    productName: "Джин Премиум",
+    motivation: { amount: getWaiterMotivation("pr4", "p2", 3), currency: "RUB" },
+    quantity: 3,
+    date: "2025-07-15T18:30:00Z",
+    restaurantId: "r1",
+    restaurantName: "Стейк-хаус BigFood на Пушечной, 61",
+    waiterId: "w1",
+    orderId: "s1757450817429_r1l9p829a"
+  },
+  {
+    id: "promo_14",
+    type: "promo_sale",
+    promotionId: "pr4",
+    promotionName: "Летний коктейль-бар",
+    productId: "p4",
+    productName: "Ром Карибский",
+    motivation: { amount: getWaiterMotivation("pr1", "p2", 4), currency: "RUB" },
+    quantity: 2,
+    date: "2025-07-20T19:45:00Z",
+    restaurantId: "r2",
+    restaurantName: "Ресторан \"У моря\"",
+    waiterId: "w1",
+    orderId: "s1757450817429_s2m0q930b"
+  },
+  {
+    id: "promo_15",
+    type: "promo_sale",
+    promotionId: "pr4",
+    promotionName: "Летний коктейль-бар",
+    productId: "p2",
+    productName: "Джин Премиум",
+    motivation: { amount: getWaiterMotivation("pr4", "p2", 3), currency: "RUB" },
+    quantity: 1,
+    date: "2025-07-25T20:15:00Z",
+    restaurantId: "r3",
+    restaurantName: "Кафе \"Уютное место\"",
+    waiterId: "w1",
+    orderId: "s1757450817429_t3n1r041c"
+  }
+];
+
+
+
+
+

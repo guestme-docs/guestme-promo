@@ -1,0 +1,369 @@
+@import "tailwindcss";
+
+:root {
+  /* Основные цвета */
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Брендовые цвета */
+  --brand: rgb(106, 232, 197); /* GuestMe primary - мятный */
+  --brand-foreground: #292929; /* Темный текст на светлом фоне */
+  --brand-hover: rgba(106, 232, 197, 0.8); /* Брендовый цвет при наведении */
+  --brand-dark: #292929; /* Второстепенный цвет */
+  --brand-dark-foreground: #ffffff; /* Белый текст на темном фоне */
+  
+  /* Поверхности и карточки */
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --card-background: #ffffff;
+  --card-border: #e2e8f0;
+  
+  /* Границы и разделители */
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --border-muted: rgba(163, 163, 163, 0.3);
+  
+  /* Тени */
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 25px rgba(106, 232, 197, 0.15);
+  
+  /* Состояния */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: rgb(106, 232, 197);
+  --primary-color: rgb(106, 232, 197);
+  --primary-color-hover: rgba(106, 232, 197, 0.8);
+  --error-color: #ef4444;
+  
+  /* Hover состояния */
+  --hover: rgba(106, 232, 197, 0.1);
+  --hover-light: rgba(106, 232, 197, 0.05);
+  --hover-medium: rgba(106, 232, 197, 0.2);
+  
+  /* Текст */
+  --text-primary: #171717;
+  --text-secondary: #6b7280;
+  --text-muted: #a3a3a3;
+  
+  /* Фоны для элементов */
+  --image-background: rgba(163, 163, 163, 0.1);
+  --motivation-background: rgba(163, 163, 163, 0.05);
+  --motivation-border: rgba(163, 163, 163, 0.2);
+  
+  /* KPI цвета */
+  --kpi-background: #f8fafc; /* Светлый фон для всех KPI */
+  --kpi-text: #171717; /* Темный текст для всех KPI */
+  --kpi-success: rgb(106, 232, 197); /* Мятный только для активных акций */
+  --kpi-success-text: #292929; /* Темный текст на мятном фоне */
+  --kpi-primary-text: #171717; /* Темный текст для primary KPI */
+  --kpi-warning-text: #171717; /* Темный текст для warning KPI */
+  --kpi-info-text: #171717; /* Темный текст для info KPI */
+  
+  /* Growth цвета */
+  --growth-positive: rgb(106, 232, 197); /* Мятный для положительного роста */
+  --growth-negative: #ef4444;
+  --growth-icon-positive: rgb(106, 232, 197); /* Мятный для иконки положительного роста */
+  --growth-icon-negative: #ef4444;
+  --growth-chip-positive: rgb(106, 232, 197); /* Мятный для чипа положительного роста */
+  --growth-chip-negative: #ef4444; /* Красный для чипа отрицательного роста */
+  
+  /* Tooltip */
+  --tooltip-background: #ffffff;
+  --tooltip-border: #e2e8f0;
+  --tooltip-text: #171717;
+  --tooltip-text-secondary: #6b7280;
+
+  /* Date Picker */
+  --date-picker-background: #ffffff;
+  --date-picker-border: #e2e8f0;
+  --date-picker-text: #171717;
+  --date-picker-header: #f8fafc;
+  --date-picker-selected: rgb(106, 232, 197);
+  --date-picker-selected-text: #292929;
+  --date-picker-hover: rgba(106, 232, 197, 0.1);
+  --date-picker-calendar-background: #ffffff;
+  --date-picker-calendar-border: #e2e8f0;
+  --date-picker-calendar-text: #171717;
+  --date-picker-calendar-day-hover: rgba(106, 232, 197, 0.1);
+  --date-picker-calendar-day-selected: rgb(106, 232, 197);
+  --date-picker-calendar-day-selected-text: #292929;
+
+  /* Tips Portal - Портал официанта */
+  --tips-sidebar-width: 280px;
+  --tips-logo-size: 32px;
+  --tips-logo-scale: 2.2;
+  --tips-spacing-xs: 4px;
+  --tips-spacing-sm: 8px;
+  --tips-spacing-md: 12px;
+  --tips-spacing-lg: 16px;
+  --tips-spacing-xl: 24px;
+  --tips-nav-item-padding: 12px 16px;
+  --tips-nav-item-font-size: 14px;
+  --tips-font-weight-medium: 500;
+  --tips-profile-card-padding: 16px;
+  --tips-profile-avatar-size: 40px;
+  --tips-profile-chip-font-size: 11px;
+  --tips-profile-chip-height: 20px;
+  --tips-header-height: 64px;
+  --tips-balance-font-size: 18px;
+  --tips-balance-label-font-size: 12px;
+  --tips-notification-badge-size: 18px;
+  --tips-notification-badge-font-size: 10px;
+  --tips-main-padding: 24px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}
+
+/* Темная тема - улучшенная цветовая схема */
+.dark {
+  /* Основные цвета */
+  --background: #111111; /* Чистый темный фон */
+  --foreground: #ffffff; /* Чистый белый текст */
+  
+  /* Брендовые цвета */
+  --brand: rgb(106, 232, 197); /* Мятный остается */
+  --brand-foreground: #111111; /* Темный текст на мятном */
+  --brand-hover: rgba(106, 232, 197, 0.8); /* Брендовый цвет при наведении */
+  --brand-dark: #ffffff; /* Белый текст на темном */
+  --brand-dark-foreground: #111111; /* Темный текст */
+  
+  /* Поверхности и карточки */
+  --muted: #1a1a1a; /* Темно-серый для карточек */
+  --muted-foreground: #a3a3a3; /* Приглушенный текст */
+  --card-background: #1a1a1a; /* Темный фон карточек */
+  --card-border: #2a2a2a; /* Темные границы карточек */
+  
+  /* Границы и разделители */
+  --border: #2a2a2a; /* Границы */
+  --border-light: #333333; /* Светлые границы */
+  --border-muted: rgba(163, 163, 163, 0.3); /* Приглушенные границы */
+  
+  /* Тени */
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.5); /* Темные тени */
+  --shadow-hover: 0 8px 25px rgba(106, 232, 197, 0.15); /* Мятные тени */
+  
+  /* Состояния */
+  --success: #22c55e; /* Яркий зеленый */
+  --warning: #f59e0b; /* Оранжевый */
+  --danger: #ef4444; /* Красный */
+  --info: rgb(106, 232, 197); /* Мятный */
+  --primary-color: rgb(106, 232, 197);
+  --primary-color-hover: rgba(106, 232, 197, 0.8);
+  --error-color: #ef4444;
+  
+  /* Hover состояния */
+  --hover: rgba(106, 232, 197, 0.1); /* Мятный hover */
+  --hover-light: rgba(106, 232, 197, 0.05); /* Легкий мятный hover */
+  --hover-medium: rgba(106, 232, 197, 0.2); /* Средний мятный hover */
+  --hover-dark: rgba(255, 255, 255, 0.05); /* Белый hover */
+  
+  /* Текст */
+  --text-primary: #ffffff; /* Белый текст */
+  --text-secondary: #a3a3a3; /* Приглушенный текст */
+  --text-muted: #a3a3a3; /* Мутный текст */
+  
+  /* Фоны для элементов */
+  --image-background: rgba(163, 163, 163, 0.1); /* Фон изображений */
+  --motivation-background: rgba(163, 163, 163, 0.05); /* Фон мотивации */
+  --motivation-border: rgba(163, 163, 163, 0.2); /* Граница мотивации */
+  
+  /* KPI цвета */
+  --kpi-background: #1a1a1a; /* Темный фон для всех KPI в темной теме */
+  --kpi-text: #ffffff; /* Белый текст остается */
+  --kpi-success: rgb(106, 232, 197); /* Мятный остается */
+  --kpi-success-text: #111111; /* Темный текст на мятном фоне */
+  --kpi-primary-text: #ffffff; /* Белый текст для primary KPI */
+  --kpi-warning-text: #ffffff; /* Белый текст для warning KPI */
+  --kpi-info-text: #ffffff; /* Белый текст для info KPI */
+  
+  /* Growth цвета */
+  --growth-positive: rgb(106, 232, 197); /* Мятный остается */
+  --growth-negative: #ef4444; /* Красный остается */
+  --growth-icon-positive: rgb(106, 232, 197); /* Мятный остается */
+  --growth-icon-negative: #ef4444; /* Красный остается */
+  --growth-chip-positive: rgb(106, 232, 197); /* Мятный для чипа положительного роста */
+  --growth-chip-negative: #ef4444; /* Красный для чипа отрицательного роста */
+  
+  /* Tooltip */
+  --tooltip-background: #1a1a1a; /* Темный фон */
+  --tooltip-border: #2a2a2a; /* Темные границы */
+  --tooltip-text: #ffffff; /* Белый текст */
+  --tooltip-text-secondary: #a3a3a3; /* Приглушенный текст */
+
+  /* Date Picker */
+  --date-picker-background: #1a1a1a; /* Темный фон */
+  --date-picker-border: #2a2a2a; /* Темные границы */
+  --date-picker-text: #ffffff; /* Белый текст */
+  --date-picker-header: #2a2a2a; /* Темный заголовок */
+  --date-picker-selected: rgb(106, 232, 197); /* Мятный остается */
+  --date-picker-selected-text: #111111; /* Темный текст на мятном */
+  --date-picker-hover: rgba(106, 232, 197, 0.2); /* Мятный hover */
+  --date-picker-calendar-background: #1a1a1a; /* Темный фон календаря */
+  --date-picker-calendar-border: #2a2a2a; /* Темные границы календаря */
+  --date-picker-calendar-text: #ffffff; /* Белый текст календаря */
+  --date-picker-calendar-day-hover: rgba(106, 232, 197, 0.2); /* Мятный hover дней */
+  --date-picker-calendar-day-selected: rgb(106, 232, 197); /* Мятный выбранный день */
+  --date-picker-calendar-day-selected-text: #111111; /* Темный текст на мятном */
+
+  /* Tips Portal - Портал официанта (темная тема) */
+  --tips-sidebar-width: 280px;
+  --tips-logo-size: 32px;
+  --tips-logo-scale: 2.2;
+  --tips-spacing-xs: 4px;
+  --tips-spacing-sm: 8px;
+  --tips-spacing-md: 12px;
+  --tips-spacing-lg: 16px;
+  --tips-spacing-xl: 24px;
+  --tips-nav-item-padding: 12px 16px;
+  --tips-nav-item-font-size: 14px;
+  --tips-font-weight-medium: 500;
+  --tips-profile-card-padding: 16px;
+  --tips-profile-avatar-size: 40px;
+  --tips-profile-chip-font-size: 11px;
+  --tips-profile-chip-height: 20px;
+  --tips-header-height: 64px;
+  --tips-balance-font-size: 18px;
+  --tips-balance-label-font-size: 12px;
+  --tips-notification-badge-size: 18px;
+  --tips-notification-badge-font-size: 10px;
+  --tips-main-padding: 24px;
+}
+
+/* Системная тема по умолчанию */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #111111;
+    --foreground: #ffffff;
+    --muted: #1a1a1a;
+    --muted-foreground: #a3a3a3;
+    --border: #2a2a2a;
+    --border-light: #333333;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tips Portal CSS Classes */
+.tips-app-shell {
+  background-color: var(--background);
+}
+
+.tips-sidebar {
+  width: var(--tips-sidebar-width);
+  background-color: var(--background);
+  border-color: var(--border);
+}
+
+.tips-logo-container {
+  padding: var(--tips-spacing-xl);
+  border-color: var(--border);
+}
+
+.tips-logo-link {
+  color: var(--foreground);
+}
+
+.tips-logo {
+  width: var(--tips-logo-size);
+  height: var(--tips-logo-size);
+  object-fit: contain;
+  transform: scale(var(--tips-logo-scale));
+  transform-origin: center;
+}
+
+.tips-nav-item {
+  padding: var(--tips-nav-item-padding);
+  font-size: var(--tips-nav-item-font-size);
+  font-weight: var(--tips-font-weight-medium);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.tips-nav-item:hover {
+  background-color: var(--hover-light);
+  color: var(--text-primary);
+}
+
+.tips-nav-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.tips-profile-card {
+  padding: var(--tips-profile-card-padding);
+  background-color: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  margin: var(--tips-spacing-md);
+}
+
+.tips-profile-avatar {
+  width: var(--tips-profile-avatar-size);
+  height: var(--tips-profile-avatar-size);
+}
+
+.tips-profile-chip {
+  font-size: var(--tips-profile-chip-font-size);
+  height: var(--tips-profile-chip-height);
+}
+
+.tips-header {
+  height: var(--tips-header-height);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+.tips-balance-text {
+  font-size: var(--tips-balance-font-size);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tips-balance-label {
+  font-size: var(--tips-balance-label-font-size);
+  color: var(--text-secondary);
+}
+
+.tips-notification-badge {
+  width: var(--tips-notification-badge-size);
+  height: var(--tips-notification-badge-size);
+  font-size: var(--tips-notification-badge-font-size);
+}
+
+.tips-main-content {
+  padding: var(--tips-main-padding);
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Tailwind utility classes for tips portal */
+.text-foreground {
+  color: var(--foreground);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.border-border {
+  border-color: var(--border);
+}
+
