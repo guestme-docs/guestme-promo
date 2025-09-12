@@ -32,7 +32,7 @@ const FilterTitle = styled(Typography)({
   color: 'var(--text-primary)',
 });
 
-const PeriodButton = styled(Button)<{ $active?: string }>(({ $active }) => ({
+const PeriodButton = styled(Button)<{ $active?: boolean }>(({ $active }) => ({
   borderRadius: 4,
   backgroundColor: $active ? 'var(--brand)' : 'var(--card-background)',
   color: $active ? 'white' : 'var(--text-primary)',
@@ -48,7 +48,7 @@ const PeriodButton = styled(Button)<{ $active?: string }>(({ $active }) => ({
   },
 }));
 
-const StarFilterItem = styled(Box)<{ $active?: string }>(({ $active }) => ({
+const StarFilterItem = styled(Box)<{ $active?: boolean }>(({ $active }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: 8,
@@ -62,7 +62,7 @@ const StarFilterItem = styled(Box)<{ $active?: string }>(({ $active }) => ({
   },
 }));
 
-const StarCountText = styled(Typography)<{ $active?: string }>(({ $active }) => ({
+const StarCountText = styled(Typography)<{ $active?: boolean }>(({ $active }) => ({
   fontSize: '0.875rem',
   color: $active ? 'var(--brand)' : 'var(--text-primary)',
   fontWeight: $active ? 600 : 400,
@@ -267,7 +267,7 @@ export default function TipsEventFilters({
               <StarFilterItem key={rating}>
                 {renderStars(rating)}
                 <StarCountText
-                  $active={filters.starRating === rating ? "true" : undefined}
+                  $active={filters.starRating === rating}
                   onClick={() => handleStarRatingChange(rating)}
                 >
                   ({starCounts[rating] || 0})
@@ -282,25 +282,25 @@ export default function TipsEventFilters({
           <FilterTitle>Период</FilterTitle>
           <PeriodContainer>
             <PeriodButton
-              $active={filters.period === 'all' ? "true" : undefined}
+              $active={filters.period === 'all'}
               onClick={() => handlePeriodChange('all')}
             >
               Все
             </PeriodButton>
             <PeriodButton
-              $active={filters.period === 'today' ? "true" : undefined}
+              $active={filters.period === 'today'}
               onClick={() => handlePeriodChange('today')}
             >
               Сегодня
             </PeriodButton>
             <PeriodButton
-              $active={filters.period === 'week' ? "true" : undefined}
+              $active={filters.period === 'week'}
               onClick={() => handlePeriodChange('week')}
             >
               Неделя
             </PeriodButton>
             <PeriodButton
-              $active={filters.period === 'month' ? "true" : undefined}
+              $active={filters.period === 'month'}
               onClick={() => handlePeriodChange('month')}
             >
               Месяц
