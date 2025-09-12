@@ -14,3 +14,4 @@ export default function PromotionDetailPage({ params }: { params: { id: string }
 
 
 
+

@@ -591,3 +591,4 @@ export default function RestaurantDetail({ params }: { params: Promise<{ id: str
   );
 }
 
+

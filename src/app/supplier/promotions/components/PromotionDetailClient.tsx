@@ -694,3 +694,4 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
   );
 }
 
+
