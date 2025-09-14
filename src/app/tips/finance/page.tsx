@@ -262,7 +262,7 @@ export default function TipsFinance() {
                         <>Отзыв {event.rating}⭐ от {event.guestName}</>
                       )}
                       {event.type === 'promo_sale' && (
-                        <>Продажа {event.productName} по акции "{event.promotionName}"</>
+                        <>Продажа {event.productName} по акции &quot;{event.promotionName}&quot;</>
                       )}
                     </TableCell>
                     <TableCell sx={{ color: 'var(--text-secondary)' }}>

@@ -276,7 +276,7 @@ export default function TipsEventCard({ event }: TipsEventCardProps) {
                   )}
                   {event.review && (
                     <Typography sx={{ fontSize: '0.75rem', color: 'text.secondary', fontStyle: 'italic' }}>
-                      "{event.review}"
+                      &quot;{event.review}&quot;
                     </Typography>
                   )}
                 </Box>
