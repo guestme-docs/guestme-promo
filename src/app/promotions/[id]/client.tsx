@@ -177,25 +177,6 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
     );
   }, [promotion?.id, currentWaiterId]);
 
-  if (!promotion) {
-    return (
-      <PageContainer>
-        <Header>
-          <Button
-            startIcon={<IconArrowLeft />}
-            onClick={() => router.back()}
-            sx={{ color: 'var(--text-primary)' }}
-          >
-            Назад
-          </Button>
-        </Header>
-        <Content>
-          <Typography variant="h4">Акция не найдена</Typography>
-        </Content>
-      </PageContainer>
-    );
-  }
-
   // Статистика по официанту
   const totalSalesCount = useMemo(() => {
     return promotionSales.reduce((sum, sale) => sum + sale.itemsSold, 0);
@@ -254,6 +235,25 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
   const filteredSales = useMemo(() => {
     return promotionSales.slice(0, 10); // Показываем только последние 10 продаж
   }, [promotionSales]);
+
+  if (!promotion) {
+    return (
+      <PageContainer>
+        <Header>
+          <Button
+            startIcon={<IconArrowLeft />}
+            onClick={() => router.back()}
+            sx={{ color: 'var(--text-primary)' }}
+          >
+            Назад
+          </Button>
+        </Header>
+        <Content>
+          <Typography variant="h4">Акция не найдена</Typography>
+        </Content>
+      </PageContainer>
+    );
+  }
 
   return (
     <PageContainer>
