@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useMemo, use } from "react";
 import { restaurants, promotions, liveSales, waiters, products } from "@/mocks/data";
 import { formatMoneyRUB } from "@/mocks/types";
-import { Card as MuiCard, CardContent, Typography, Box, Tabs, Tab, Chip, IconButton } from '@mui/material';
+import { Card as MuiCard, CardContent, Typography, Box, Tabs, Tab, Chip, IconButton, Button } from '@mui/material';
 import RestaurantPromotionCard from '@/components/RestaurantPromotionCard';
 import SaleEventCard from '@/components/SaleEventCard';
 import { styled } from '@mui/material/styles';
@@ -59,6 +59,21 @@ export default function RestaurantDetailClient({ params }: { params: { id: strin
     return restaurants.find(r => r.id === params.id);
   }, [params.id]);
 
+  // Используем изображения из данных ресторана
+  const restaurantImage = restaurant?.imageUrl;
+
+  const restaurantPromotions = useMemo(() => {
+    if (!restaurant) return [];
+    return promotions.filter(p => p.restaurants.includes(restaurant.id));
+  }, [restaurant?.id]);
+
+  const restaurantSales = useMemo(() => {
+    if (!restaurant) return [];
+    return liveSales.filter(sale => 
+      sale.restaurantId === restaurant.id
+    );
+  }, [restaurant?.id]);
+
   if (!restaurant) {
     return (
       <PageContainer>
@@ -77,19 +92,6 @@ export default function RestaurantDetailClient({ params }: { params: { id: strin
       </PageContainer>
     );
   }
-
-  // Используем изображения из данных ресторана
-  const restaurantImage = restaurant.imageUrl;
-
-  const restaurantPromotions = useMemo(() => {
-    return promotions.filter(p => p.restaurants.includes(restaurant.id));
-  }, [restaurant.id]);
-
-  const restaurantSales = useMemo(() => {
-    return liveSales.filter(sale => 
-      sale.restaurantId === restaurant.id
-    );
-  }, [restaurant.id]);
 
   return (
     <PageContainer>
