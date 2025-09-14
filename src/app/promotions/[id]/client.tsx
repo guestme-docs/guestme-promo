@@ -168,6 +168,15 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
     return promotions.find(p => p.id === resolvedParams.id);
   }, [resolvedParams.id]);
 
+  // Фильтрация продаж по текущему официанту
+  const promotionSales = useMemo(() => {
+    if (!promotion) return [];
+    return liveSales.filter(sale => 
+      sale.promotionId === promotion.id && 
+      sale.waiterId === currentWaiterId
+    );
+  }, [promotion?.id, currentWaiterId]);
+
   if (!promotion) {
     return (
       <PageContainer>
@@ -186,14 +195,6 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
       </PageContainer>
     );
   }
-
-  // Фильтрация продаж по текущему официанту
-  const promotionSales = useMemo(() => {
-    return liveSales.filter(sale => 
-      sale.promotionId === promotion.id && 
-      sale.waiterId === currentWaiterId
-    );
-  }, [promotion.id, currentWaiterId]);
 
   // Статистика по официанту
   const totalSalesCount = useMemo(() => {
