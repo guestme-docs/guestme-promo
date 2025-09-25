@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTheme } from './ThemeProvider';
@@ -74,8 +73,8 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
           borderColor: 'var(--border)' 
         }}>
           <Link href="/tips/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
-            <Image 
-              src="./Logo_symbol.svg" 
+            <img 
+              src="/Logo_symbol.svg" 
               alt="GuestMe чаевые" 
               width={32}
               height={32}
@@ -84,7 +83,6 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
                 transform: `scale(var(--tips-logo-scale))`,
                 transformOrigin: 'center'
               }}
-              priority
             />
             <div>
               <div className="text-xl font-bold">GuestMe чаевые</div>

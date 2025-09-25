@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from './ThemeProvider';
 import ThemeToggle from './ThemeToggle';
@@ -77,8 +76,8 @@ export default function AppShell({ children }: AppShellProps) {
         {/* Logo */}
         <div className={`p-6 border-b ${isDark ? "border-[#2a2a2a]" : "border-gray-200"}`}>
           <Link href="/supplier/" className={`flex items-center gap-3 ${isDark ? "text-white" : "text-gray-900"}`}>
-            <Image 
-              src="./Logo_symbol.svg" 
+            <img 
+              src="/Logo_symbol.svg" 
               alt="GuestMe Promo" 
               width={32}
               height={32}
@@ -87,7 +86,6 @@ export default function AppShell({ children }: AppShellProps) {
                 transform: 'scale(2.2)',
                 transformOrigin: 'center'
               }}
-              priority
             />
             <div>
               <div className="text-xl font-bold">GuestMe Promo</div>
