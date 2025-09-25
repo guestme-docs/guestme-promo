@@ -42,7 +42,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
   }
 
   const navItems = [
-    { href: "/tips", label: "Дашборд" },
+    { href: "./tips/", label: "Дашборд" },
     { label: "Финансы" },
   ];
 
