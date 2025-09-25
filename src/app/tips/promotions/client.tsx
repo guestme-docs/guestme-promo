@@ -415,7 +415,7 @@ export default function TipsPromotionDetailClient({ promotionId }: { promotionId
                   <WaiterItem key={waiter.id} $isCurrent={waiter.id === currentWaiterId}>
                     <WaiterInfo>
                       <WaiterAvatar
-                        src="./waiter-photo.svg"
+                        src="/guestme-promo/waiter-photo.svg"
                         alt={waiter.name}
                       />
                       <Box>
