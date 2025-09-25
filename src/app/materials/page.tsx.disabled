@@ -1,0 +1,12 @@
+"use client";
+
+import React from 'react';
+
+export default function MaterialsPage() {
+  return React.createElement('div', null, 
+    React.createElement('h1', null, 'Materials'),
+    React.createElement('p', null, 'This page is under construction.')
+  );
+}
+
+

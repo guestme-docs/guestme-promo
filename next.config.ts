@@ -19,10 +19,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@tabler/icons-react', '@mui/material'],
   },
   
-  // Отключаем Server Actions для статического экспорта
-  serverActions: {
-    allowedOrigins: [],
-  },
   
   // Отключаем внешние пакеты для Server Components
   serverExternalPackages: [],
