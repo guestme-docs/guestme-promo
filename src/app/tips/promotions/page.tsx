@@ -348,7 +348,7 @@ export default function PromotionsPage() {
                     motivationToPay={promotion.motivationToPay}
                     restaurantsCount={promotion.restaurants.length}
                     waitersCount={promotion.waitersCount}
-                    onClick={() => router.push(`/supplier/promotions/${promotion.id}`)}
+                    onClick={() => router.push(`./supplier/promotions/${promotion.id}/`)}
                   />
                 ))}
               </div>

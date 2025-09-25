@@ -379,7 +379,7 @@ export default function CreatePromotionPage() {
       });
       
       setTimeout(() => {
-        router.push('/promotions');
+        router.push('./promotions/');
       }, 1500);
     } catch (error) {
       setSnackbar({
