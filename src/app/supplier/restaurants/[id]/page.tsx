@@ -8,7 +8,6 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function RestaurantDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = await params;
-  return <RestaurantDetailClient params={resolvedParams} />;
+export default function RestaurantDetailPage({ params }: { params: { id: string } }) {
+  return <RestaurantDetailClient params={params} />;
 }
