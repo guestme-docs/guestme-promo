@@ -16,7 +16,7 @@ export default function NotFound() {
         className: 'text-gray-600 mb-8' 
       }, 'Страница не найдена'),
       React.createElement('a', {
-        href: './',
+        href: '/',
         className: 'inline-block py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700'
       }, 'На главную')
     )

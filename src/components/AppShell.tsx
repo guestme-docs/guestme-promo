@@ -23,12 +23,12 @@ export default function AppShell({ children }: AppShellProps) {
         // Предзагружаем страницы промоакций и продаж
         const link1 = document.createElement('link');
         link1.rel = 'prefetch';
-        link1.href = './supplier/promotions/';
+        link1.href = '/supplier/promotions/';
         document.head.appendChild(link1);
 
         const link2 = document.createElement('link');
         link2.rel = 'prefetch';
-        link2.href = './supplier/sales/';
+        link2.href = '/supplier/sales/';
         document.head.appendChild(link2);
       }
     };
@@ -39,10 +39,10 @@ export default function AppShell({ children }: AppShellProps) {
   }, [pathname]);
 
   const navItems = [
-    { href: "./supplier/", label: "Дашборд" },
-    { href: "./supplier/promotions/", label: "Акции" },
-    { href: "./supplier/sales/", label: "Продажи" },
-    { href: "./supplier/restaurants/", label: "Рестораны" },
+    { href: "/supplier/", label: "Дашборд" },
+    { href: "/supplier/promotions/", label: "Акции" },
+    { href: "/supplier/sales/", label: "Продажи" },
+    { href: "/supplier/restaurants/", label: "Рестораны" },
   ];
 
   // Функция для получения заголовка страницы
