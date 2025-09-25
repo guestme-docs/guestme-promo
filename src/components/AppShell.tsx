@@ -76,9 +76,9 @@ export default function AppShell({ children }: AppShellProps) {
       <aside className={`w-64 flex flex-col border-r ${isDark ? "bg-[#111111] border-[#2a2a2a]" : "bg-white border-gray-200"}`}>
         {/* Logo */}
         <div className={`p-6 border-b ${isDark ? "border-[#2a2a2a]" : "border-gray-200"}`}>
-          <Link href="./supplier/" className={`flex items-center gap-3 ${isDark ? "text-white" : "text-gray-900"}`}>
+          <Link href="/supplier/" className={`flex items-center gap-3 ${isDark ? "text-white" : "text-gray-900"}`}>
             <Image 
-              src="./Logo_symbol.svg" 
+              src="/Logo_symbol.svg" 
               alt="GuestMe Promo" 
               width={32}
               height={32}

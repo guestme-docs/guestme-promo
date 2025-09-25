@@ -119,7 +119,7 @@ export default function Dashboard() {
                 title="Активные акции" 
                 value={summary.activePromotions} 
                 color="success"
-                onClick={() => router.push("./supplier/promotions/?status=active")}
+                onClick={() => router.push("/supplier/promotions/?status=active")}
               />
             </PromotionTooltip>
             
@@ -145,7 +145,7 @@ export default function Dashboard() {
               value={summary.totalSalesCount} 
               growth={summary.salesGrowth}
               color="primary"
-              onClick={() => router.push("./supplier/sales/")}
+              onClick={() => router.push("/supplier/sales/")}
               isAccent={true}
             />
             
@@ -174,7 +174,7 @@ export default function Dashboard() {
                   motivationToPay={p.motivationToPay}
                   restaurantsCount={p.restaurants.length}
                   waitersCount={p.waitersCount} // Количество официантов из данных акции
-                  onClick={() => router.push(`./supplier/promotions/${p.id}/`)}
+                  onClick={() => router.push(`/supplier/promotions/${p.id}/`)}
                 />
               ))}
             </div>
@@ -197,7 +197,7 @@ export default function Dashboard() {
                   motivationToPay={p.motivationToPay}
                   restaurantsCount={p.restaurants.length}
                   waitersCount={p.waitersCount} // Количество официантов из данных акции
-                  onClick={() => router.push(`./supplier/promotions/${p.id}/`)}
+                  onClick={() => router.push(`/supplier/promotions/${p.id}/`)}
                 />
               ))}
             </div>
@@ -251,8 +251,8 @@ export default function Dashboard() {
                     totalAmount={{ amount: totalAmount, currency: "RUB" }}
                     occurredAt={s.occurredAt}
                     promotionBannerUrl={promotion?.bannerUrl}
-                    onPromotionClick={(promotionId) => router.push(`./supplier/promotions/${promotionId}/`)}
-                    onRestaurantClick={() => router.push(`./supplier/restaurants/${s.restaurantId}/`)}
+                    onPromotionClick={(promotionId) => router.push(`/supplier/promotions/${promotionId}/`)}
+                    onRestaurantClick={() => router.push(`/supplier/restaurants/${s.restaurantId}/`)}
                   />
                 );
               })}

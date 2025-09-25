@@ -267,7 +267,7 @@ export default function PromotionsPage() {
             {/* Create Button - максимально вправо */}
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <CreateButton>
-                <Link href="./promotions/new/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link href="/promotions/new/" style={{ textDecoration: 'none', color: 'inherit' }}>
                   Создать акцию
                 </Link>
               </CreateButton>
@@ -347,7 +347,7 @@ export default function PromotionsPage() {
                     motivationToPay={promotion.motivationToPay}
                     restaurantsCount={promotion.restaurants?.length || 0}
                     waitersCount={promotion.waitersCount || 0}
-                    onClick={() => router.push(`./promotions/${promotion.id}/`)}
+                    onClick={() => router.push(`/promotions/${promotion.id}/`)}
                   />
                 ))}
               </div>

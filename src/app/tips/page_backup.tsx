@@ -256,7 +256,7 @@ export default function TipsDashboard() {
               endsAt={promotion.endsAt}
               isParticipating={true}
               onClick={() => {
-                router.push(`./tips/promotions/${promotion.id}/`);
+                router.push(`/tips/promotions/${promotion.id}/`);
               }}
             />
           ))}
@@ -273,7 +273,7 @@ export default function TipsDashboard() {
               endsAt={promotion.endsAt}
               isParticipating={true}
               onClick={() => {
-                router.push(`./tips/promotions/${promotion.id}/`);
+                router.push(`/tips/promotions/${promotion.id}/`);
               }}
             />
           ))}
@@ -290,7 +290,7 @@ export default function TipsDashboard() {
               endsAt={promotion.endsAt}
               isParticipating={false}
               onClick={() => {
-                router.push(`./tips/promotions/${promotion.id}/`);
+                router.push(`/tips/promotions/${promotion.id}/`);
               }}
               onJoin={() => {
                 console.log('Присоединение к акции:', promotion.id);

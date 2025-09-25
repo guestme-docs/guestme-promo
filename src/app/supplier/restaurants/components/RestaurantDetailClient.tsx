@@ -342,7 +342,7 @@ export default function RestaurantDetailClient({ params }: { params: Promise<{ i
                 motivationToPay={promotion.motivationToPay}
                 restaurantsCount={promotion.restaurants?.length || 0}
                 waitersCount={promotion.waitersCount}
-                onClick={() => router.push(`./supplier/promotions/${promotion.id}/`)}
+                onClick={() => router.push(`/supplier/promotions/${promotion.id}/`)}
               />
             ))}
           </Box>
@@ -385,7 +385,7 @@ export default function RestaurantDetailClient({ params }: { params: Promise<{ i
                   promotionBannerUrl={promotion?.bannerUrl}
                   onPromotionClick={() => {
                     if (promotion) {
-                      router.push(`./supplier/promotions/${promotion.id}/`);
+                      router.push(`/supplier/promotions/${promotion.id}/`);
                     }
                   }}
                   onRestaurantClick={() => {

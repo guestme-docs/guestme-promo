@@ -259,7 +259,7 @@ export default function TipsDashboard() {
                 salesCount={stats.salesCount}
                 motivationToPay={stats.motivationToPay}
                 onClick={() => {
-                  router.push(`./tips/promotions/${promotion.id}/`);
+                  router.push(`/tips/promotions/${promotion.id}/`);
                 }}
               />
             );
@@ -280,7 +280,7 @@ export default function TipsDashboard() {
                 salesCount={stats.salesCount}
                 motivationToPay={stats.motivationToPay}
                 onClick={() => {
-                  router.push(`./tips/promotions/${promotion.id}/`);
+                  router.push(`/tips/promotions/${promotion.id}/`);
                 }}
               />
             );
@@ -301,7 +301,7 @@ export default function TipsDashboard() {
                 salesCount={stats.salesCount}
                 motivationToPay={stats.motivationToPay}
                 onClick={() => {
-                  router.push(`./tips/promotions/${promotion.id}/`);
+                  router.push(`/tips/promotions/${promotion.id}/`);
                 }}
               />
             );

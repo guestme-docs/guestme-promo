@@ -382,7 +382,7 @@ export default function PromotionDetailClient({ params }: { params: { id: string
                   <WaiterItem key={waiter.id} $isCurrent={waiter.id === currentWaiterId}>
                     <WaiterInfo>
                       <WaiterAvatar
-                        src="./waiter-photo.svg"
+                        src="/waiter-photo.svg"
                         alt={waiter.name}
                       />
                       <Box>

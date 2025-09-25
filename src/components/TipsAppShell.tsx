@@ -73,9 +73,9 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
           padding: 'var(--tips-spacing-xl)', 
           borderColor: 'var(--border)' 
         }}>
-          <Link href="./tips/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
+          <Link href="/tips/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
             <Image 
-              src="./Logo_symbol.svg" 
+              src="/Logo_symbol.svg" 
               alt="GuestMe чаевые" 
               width={32}
               height={32}

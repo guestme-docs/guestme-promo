@@ -546,7 +546,7 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
                     // Можно добавить навигацию к детальной странице акции
                   }}
                   onRestaurantClick={() => {
-                    router.push(`./supplier/restaurants/${sale.restaurantId}/`);
+                    router.push(`/supplier/restaurants/${sale.restaurantId}/`);
                   }}
                 />
               );
@@ -590,7 +590,7 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
             </Typography>
             <Box sx={{ space: 2 }}>
               {topRestaurants.map(({ restaurant, sales, motivation }, index) => (
-                <TopItemCard key={restaurant.id} sx={{ mb: 2 }} onClick={() => router.push(`./supplier/restaurants/${restaurant.id}/`)}>
+                <TopItemCard key={restaurant.id} sx={{ mb: 2 }} onClick={() => router.push(`/supplier/restaurants/${restaurant.id}/`)}>
                   <CardContent sx={{ p: 2 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                       {/* Фото ресторана */}
