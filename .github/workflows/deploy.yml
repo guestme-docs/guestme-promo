@@ -6,6 +6,17 @@ on:
   pull_request:
     branches: [ master ]
 
+# Настройка прав для GitHub Actions
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Настройка для GitHub Pages
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -29,10 +40,14 @@ jobs:
         GITHUB_ACTIONS: true
         NODE_OPTIONS: "--max-old-space-size=8192"
         
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/master'
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        publish_dir: ./dist
-        cname: # Оставьте пустым, если не используете кастомный домен
+        path: ./dist
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
