@@ -5,7 +5,7 @@ const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
 
 const nextConfig: NextConfig = {
   // Настройки для GitHub Pages
-  output: 'export',
+  // output: 'export', // Временно отключаем для тестирования
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   distDir: 'dist',
