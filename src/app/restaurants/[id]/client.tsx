@@ -134,11 +134,12 @@ export default function RestaurantDetailClient({ params }: { params: { id: strin
                   id={promotion.id}
                   name={promotion.name}
                   status={promotion.status}
-                  bannerUrl={promotion.bannerUrl}
+                  bannerUrl={promotion.bannerUrl || ""}
                   startsAt={promotion.startsAt}
                   endsAt={promotion.endsAt}
                   salesCount={promotion.salesCount || 0}
                   motivationToPay={promotion.motivationToPay || { amount: 0, currency: 'RUB' }}
+                  restaurantsCount={promotion.restaurants?.length || 0}
                   waitersCount={promotion.waitersCount || 0}
                 />
               ))}
@@ -150,20 +151,26 @@ export default function RestaurantDetailClient({ params }: { params: { id: strin
           <Box>
             <SectionTitle>Продажи</SectionTitle>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {restaurantSales.slice(0, 10).map((sale) => (
-                <SaleEventCard 
-                  key={sale.id} 
-                  id={sale.id}
-                  promotionId={sale.promotionId}
-                  promotionName={sale.promotionName}
-                  restaurantName={sale.restaurantName}
-                  waiterName={sale.waiterName}
-                  items={sale.items}
-                  totalAmount={sale.totalAmount}
-                  occurredAt={sale.occurredAt}
-                  promotionBannerUrl={sale.promotionBannerUrl}
-                />
-              ))}
+              {restaurantSales.slice(0, 10).map((sale) => {
+                const promotion = promotions.find(p => p.id === sale.promotionId);
+                const restaurant = restaurants.find(r => r.id === sale.restaurantId);
+                const waiter = waiters.find(w => w.id === sale.waiterId);
+                
+                return (
+                  <SaleEventCard 
+                    key={sale.id} 
+                    id={sale.id}
+                    promotionId={sale.promotionId}
+                    promotionName={promotion?.name || 'Неизвестная акция'}
+                    restaurantName={restaurant?.name || 'Неизвестный ресторан'}
+                    waiterName={waiter?.name || 'Неизвестный официант'}
+                    items={sale.items}
+                    totalAmount={sale.totalAmount}
+                    occurredAt={sale.occurredAt}
+                    promotionBannerUrl={promotion?.bannerUrl || ''}
+                  />
+                );
+              })}
             </Box>
           </Box>
         )}

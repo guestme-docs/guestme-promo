@@ -278,7 +278,15 @@ export default function SalesPage() {
               promotionName={sale.promotionName}
               restaurantName={sale.restaurantName}
               waiterName={sale.waiterName}
-              items={sale.items}
+              items={sale.items.map(item => ({
+                ...item,
+                paymentBreakdown: {
+                  totalAmount: item.motivation,
+                  guestmeCommission: { amount: item.motivation.amount * 0.1, currency: 'RUB' },
+                  adminPayment: { amount: item.motivation.amount * 0.3, currency: 'RUB' },
+                  waiterPayment: { amount: item.motivation.amount * 0.6, currency: 'RUB' }
+                }
+              }))}
               totalAmount={sale.totalAmount}
               occurredAt={sale.occurredAt}
               promotionBannerUrl={sale.promotionBannerUrl}

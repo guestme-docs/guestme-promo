@@ -27,6 +27,7 @@ jobs:
       run: npm run build:github
       env:
         GITHUB_ACTIONS: true
+        NODE_OPTIONS: "--max-old-space-size=8192"
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3

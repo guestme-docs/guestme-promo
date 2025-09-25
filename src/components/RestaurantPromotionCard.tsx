@@ -19,6 +19,7 @@ type RestaurantPromotionCardProps = {
   endsAt: string;
   salesCount: number;
   motivationToPay: { amount: number; currency: string };
+  restaurantsCount: number;
   waitersCount: number;
   onClick?: () => void;
 };

@@ -8,9 +8,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function EditTipsPromotionPage({ params }: { params: { id: string } }) {
-  return <EditTipsPromotionClient params={params} />;
+export default async function EditTipsPromotionPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  return <EditTipsPromotionClient params={resolvedParams} />;
 }
+
+
 
 
 

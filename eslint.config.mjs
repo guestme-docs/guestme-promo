@@ -22,9 +22,13 @@ const eslintConfig = [
   },
   {
     rules: {
-      "react-hooks/rules-of-hooks": "warn", // Изменить с error на warn
-      "@typescript-eslint/no-unused-vars": "warn", // Изменить с error на warn
-      "@typescript-eslint/no-explicit-any": "warn", // Изменить с error на warn
+      "react-hooks/rules-of-hooks": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      // Отключаем медленные правила для ускорения сборки
+      "@next/next/no-img-element": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];

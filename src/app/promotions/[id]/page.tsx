@@ -8,9 +8,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function PromotionDetailPage({ params }: { params: { id: string } }) {
-  return <PromotionDetailClient params={params} />;
+export default async function PromotionDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  return <PromotionDetailClient params={resolvedParams} />;
 }
+
+
 
 
 

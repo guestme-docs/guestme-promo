@@ -32,7 +32,9 @@ const FilterTitle = styled(Typography)({
   color: 'var(--text-primary)',
 });
 
-const PeriodButton = styled(Button)<{ $active?: boolean }>(({ $active }) => ({
+const PeriodButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== '$active',
+})<{ $active?: boolean }>(({ $active }) => ({
   borderRadius: 4,
   backgroundColor: $active ? 'var(--brand)' : 'var(--card-background)',
   color: $active ? 'white' : 'var(--text-primary)',
@@ -48,7 +50,9 @@ const PeriodButton = styled(Button)<{ $active?: boolean }>(({ $active }) => ({
   },
 }));
 
-const StarFilterItem = styled(Box)<{ $active?: boolean }>(({ $active }) => ({
+const StarFilterItem = styled(Box, {
+  shouldForwardProp: (prop) => prop !== '$active',
+})<{ $active?: boolean }>(({ $active }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: 8,
@@ -62,7 +66,9 @@ const StarFilterItem = styled(Box)<{ $active?: boolean }>(({ $active }) => ({
   },
 }));
 
-const StarCountText = styled(Typography)<{ $active?: boolean }>(({ $active }) => ({
+const StarCountText = styled(Typography, {
+  shouldForwardProp: (prop) => prop !== '$active',
+})<{ $active?: boolean }>(({ $active }) => ({
   fontSize: '0.875rem',
   color: $active ? 'var(--brand)' : 'var(--text-primary)',
   fontWeight: $active ? 600 : 400,

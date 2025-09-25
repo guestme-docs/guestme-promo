@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "build:github": "set GITHUB_ACTIONS=true && next build --turbopack",
+    "build:fast": "set NODE_OPTIONS=--max-old-space-size=4096 && next build",
+    "build:github": "set GITHUB_ACTIONS=true && set NODE_OPTIONS=--max-old-space-size=8192 && next build",
     "start": "next start",
     "lint": "eslint",
     "check-supplier": "node check-supplier-portal.js",

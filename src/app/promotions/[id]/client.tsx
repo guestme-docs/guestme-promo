@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useMemo, use } from "react";
+import { useState, useMemo } from "react";
 import { restaurants, promotions, liveSales, waiters, products } from "@/mocks/data";
 import { formatMoneyRUB } from "@/mocks/types";
 // import { usePromotionStore } from "@/mocks/store";
@@ -154,15 +154,15 @@ const MotivationText = styled(Typography)({
   color: 'var(--brand)',
 });
 
-export default function PromotionDetailClient({ params }: { params: Promise<{ id: string }> }) {
+export default function PromotionDetailClient({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [selectedRestaurant, setSelectedRestaurant] = useState<string>('all');
   
   // Текущий официант (в реальном приложении это будет из контекста/состояния)
   const currentWaiterId = 'w1';
   
-  // Разрешаем промис с параметрами
-  const resolvedParams = use(params);
+  // Используем параметры напрямую
+  const resolvedParams = params;
   
   const promotion = useMemo(() => {
     return promotions.find(p => p.id === resolvedParams.id);
@@ -179,11 +179,13 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
 
   // Статистика по официанту
   const totalSalesCount = useMemo(() => {
-    return promotionSales.reduce((sum, sale) => sum + sale.itemsSold, 0);
+    return promotionSales.reduce((sum, sale) => 
+      sum + sale.items.reduce((itemSum, item) => itemSum + item.quantity, 0), 0);
   }, [promotionSales]);
 
   const totalMotivation = useMemo(() => {
-    return promotionSales.reduce((sum, sale) => sum + sale.motivation, 0);
+    return promotionSales.reduce((sum, sale) => 
+      sum + sale.items.reduce((itemSum, item) => itemSum + item.motivation.amount, 0), 0);
   }, [promotionSales]);
 
   // Данные для графика (только продажи текущего официанта)
@@ -191,18 +193,18 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
     const salesByDay: { [key: string]: number } = {};
     
     promotionSales.forEach(sale => {
-      const dateObj = new Date(sale.timestamp);
+      const dateObj = new Date(sale.occurredAt);
       // Проверяем валидность даты
       if (!isNaN(dateObj.getTime())) {
         const date = dateObj.toISOString().split('T')[0];
-        salesByDay[date] = (salesByDay[date] || 0) + sale.itemsSold;
+        salesByDay[date] = (salesByDay[date] || 0) + sale.items.reduce((sum, item) => sum + item.quantity, 0);
       }
     });
 
     return Object.entries(salesByDay).map(([date, count]) => ({
-      date,
-      count,
-    })).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      x: new Date(date).getTime(),
+      y: count,
+    })).sort((a, b) => a.x - b.x);
   }, [promotionSales]);
 
   // Топ официантов (только из ресторана текущего официанта)
@@ -219,17 +221,18 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
     return restaurantWaiters.map(waiter => {
       const waiterSales = liveSales.filter(sale => 
         sale.waiterId === waiter.id && 
-        sale.promotionId === promotion.id
+        promotion && sale.promotionId === promotion.id
       );
       
-      const salesCount = waiterSales.reduce((sum, sale) => sum + sale.itemsSold, 0);
+      const salesCount = waiterSales.reduce((sum, sale) => 
+        sum + sale.items.reduce((itemSum, item) => itemSum + item.quantity, 0), 0);
       
       return {
         ...waiter,
         salesCount,
       };
     }).sort((a, b) => b.salesCount - a.salesCount);
-  }, [currentRestaurantId, promotion.id]);
+  }, [currentRestaurantId, promotion?.id]);
 
   // Фильтрация продаж для ленты
   const filteredSales = useMemo(() => {
@@ -267,7 +270,7 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
             Назад
           </Button>
           <Typography variant="h4" sx={{ color: 'var(--text-primary)' }}>
-            {promotion.title}
+            {promotion.name}
           </Typography>
         </Box>
       </Header>
@@ -275,16 +278,24 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
       <Content>
         {/* Карточка акции */}
         <PromotionCard
-          promotion={promotion}
+          id={promotion.id}
+          name={promotion.name}
+          status={promotion.status}
+          bannerUrl={promotion.bannerUrl || '/placeholder-banner.svg'}
+          startsAt={promotion.startsAt}
+          endsAt={promotion.endsAt}
           salesCount={totalSalesCount}
           motivationToPay={{ amount: totalMotivation, currency: 'RUB' }}
+          restaurantsCount={promotion.restaurants?.length || 0}
+          waitersCount={0}
+          hideDetailButton={true}
         />
 
         {/* Продвигаемые продукты */}
         <SectionTitle>Продвигаемые продукты</SectionTitle>
         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, marginBottom: 4 }}>
-          {promotion.products.map((productId) => {
-            const product = products.find(p => p.id === productId);
+          {promotion.products?.map((promotionProduct) => {
+            const product = products.find(p => p.id === promotionProduct.productId);
             if (!product) return null;
 
             return (
@@ -307,7 +318,7 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
                   {/* Мотивация официанта */}
                   <MotivationBox>
                     <MotivationText>
-                      Мотивация: {formatMoneyRUB(product.motivation)}
+                      Мотивация: {formatMoneyRUB(promotionProduct.motivationPerSale)}
                     </MotivationText>
                   </MotivationBox>
                 </CardContent>
@@ -322,9 +333,6 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
           <CardContent>
             <NowUILineChart
               data={chartData}
-              title="Продажи по дням"
-              dataKey="count"
-              xAxisKey="date"
             />
           </CardContent>
         </ChartCard>
@@ -335,9 +343,26 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
           <CardContent>
             {filteredSales.length > 0 ? (
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {filteredSales.map((sale) => (
-                  <SaleEventCard key={sale.id} sale={sale} />
-                ))}
+                {filteredSales.map((sale) => {
+                  const promotion = promotions.find(p => p.id === sale.promotionId);
+                  const restaurant = restaurants.find(r => r.id === sale.restaurantId);
+                  const waiter = waiters.find(w => w.id === sale.waiterId);
+                  
+                  return (
+                    <SaleEventCard 
+                      key={sale.id}
+                      id={sale.id}
+                      promotionId={sale.promotionId}
+                      promotionName={promotion?.name || 'Неизвестная акция'}
+                      restaurantName={restaurant?.name || 'Неизвестный ресторан'}
+                      waiterName={waiter?.name || 'Неизвестный официант'}
+                      items={sale.items}
+                      totalAmount={sale.totalAmount}
+                      occurredAt={sale.occurredAt}
+                      promotionBannerUrl={promotion?.bannerUrl}
+                    />
+                  );
+                })}
               </Box>
             ) : (
               <Typography color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
@@ -357,12 +382,12 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
                   <WaiterItem key={waiter.id} $isCurrent={waiter.id === currentWaiterId}>
                     <WaiterInfo>
                       <WaiterAvatar
-                        src={waiter.avatar}
-                        alt={`${waiter.name} ${waiter.surname}`}
+                        src="/waiter-photo.svg"
+                        alt={waiter.name}
                       />
                       <Box>
                         <WaiterName $isCurrent={waiter.id === currentWaiterId}>
-                          {waiter.name} {waiter.surname}
+                          {waiter.name}
                         </WaiterName>
                         {waiter.id === currentWaiterId && (
                           <CurrentWaiterBadge>Вы</CurrentWaiterBadge>

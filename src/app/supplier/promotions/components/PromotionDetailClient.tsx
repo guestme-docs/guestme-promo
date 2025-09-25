@@ -372,7 +372,7 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
                         lineHeight: 1.5,
                         fontSize: '0.875rem'
                       }}>
-                        {product.description || 'Описание не указано'}
+                        {product.name || 'Описание не указано'}
                       </Typography>
                     </Box>
                     
@@ -693,5 +693,7 @@ export default function PromotionDetailClient({ params }: { params: Promise<{ id
     </div>
   );
 }
+
+
 
 

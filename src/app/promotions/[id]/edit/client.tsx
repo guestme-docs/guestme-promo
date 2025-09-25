@@ -21,12 +21,14 @@ export default function EditPromotionClient({ params }: { params: { id: string }
 
   return (
     <div>
-      <h1>Редактирование акции: {item.title}</h1>
+      <h1>Редактирование акции: {item.name}</h1>
       <p>Функция редактирования будет добавлена позже</p>
       <button onClick={() => router.back()}>Назад</button>
     </div>
   );
 }
+
+
 
 
 

@@ -340,7 +340,7 @@ export default function RestaurantDetailClient({ params }: { params: Promise<{ i
                 endsAt={promotion.endsAt}
                 salesCount={promotion.salesCount}
                 motivationToPay={promotion.motivationToPay}
-                restaurantsCount={promotion.restaurants.length}
+                restaurantsCount={promotion.restaurants?.length || 0}
                 waitersCount={promotion.waitersCount}
                 onClick={() => router.push(`/supplier/promotions/${promotion.id}`)}
               />

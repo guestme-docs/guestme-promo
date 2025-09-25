@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePromotionStore } from "@/mocks/store";
 
-export default function EditSupplierPromotionClient({ params }: { params: Promise<{ id: string }> }) {
+export default function EditSupplierPromotionClient({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { byId, update } = usePromotionStore();
-  const resolvedParams = use(params);
-  const item = byId(resolvedParams.id);
+  const item = byId(params.id);
 
   useEffect(() => {
     if (!item) {
@@ -22,7 +21,7 @@ export default function EditSupplierPromotionClient({ params }: { params: Promis
 
   return (
     <div>
-      <h1>Редактирование акции: {item.title}</h1>
+      <h1>Редактирование акции: {item.name}</h1>
       <p>Функция редактирования будет добавлена позже</p>
       <button onClick={() => router.back()}>Назад</button>
     </div>

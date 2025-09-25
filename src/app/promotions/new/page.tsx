@@ -261,7 +261,7 @@ export default function CreatePromotionPage() {
 
     if (!formData.endsAt) {
       newErrors.endsAt = 'Дата окончания обязательна';
-    } else if (formData.startsAt && formData.endsAt.isSameOrBefore(formData.startsAt, 'day')) {
+    } else if (formData.startsAt && (formData.endsAt.isSame(formData.startsAt, 'day') || formData.endsAt.isBefore(formData.startsAt, 'day'))) {
       newErrors.endsAt = 'Дата окончания должна быть больше даты начала';
     }
 
@@ -481,7 +481,7 @@ export default function CreatePromotionPage() {
               <StyledDatePicker
                 label="Дата начала *"
                 value={formData.startsAt || null}
-                onChange={(newValue) => handleInputChange('startsAt', newValue)}
+                onChange={(newValue) => handleInputChange('startsAt', newValue ? newValue.format('YYYY-MM-DD') : '')}
                 slotProps={{
                   textField: {
                     error: !!errors.startsAt,
@@ -493,7 +493,7 @@ export default function CreatePromotionPage() {
               <StyledDatePicker
                 label="Дата окончания *"
                 value={formData.endsAt || null}
-                onChange={(newValue) => handleInputChange('endsAt', newValue)}
+                onChange={(newValue) => handleInputChange('endsAt', newValue ? newValue.format('YYYY-MM-DD') : '')}
                 slotProps={{
                   textField: {
                     error: !!errors.endsAt,
