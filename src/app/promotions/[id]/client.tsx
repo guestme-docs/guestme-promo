@@ -281,7 +281,7 @@ export default function PromotionDetailClient({ params }: { params: { id: string
           id={promotion.id}
           name={promotion.name}
           status={promotion.status}
-          bannerUrl={promotion.bannerUrl || '/placeholder-banner.svg'}
+          bannerUrl={promotion.bannerUrl || './placeholder-banner.svg'}
           startsAt={promotion.startsAt}
           endsAt={promotion.endsAt}
           salesCount={totalSalesCount}
@@ -382,7 +382,7 @@ export default function PromotionDetailClient({ params }: { params: { id: string
                   <WaiterItem key={waiter.id} $isCurrent={waiter.id === currentWaiterId}>
                     <WaiterInfo>
                       <WaiterAvatar
-                        src="/waiter-photo.svg"
+                        src="./waiter-photo.svg"
                         alt={waiter.name}
                       />
                       <Box>
