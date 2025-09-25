@@ -74,7 +74,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
         }}>
           <Link href="/tips/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
             <img 
-              src="/Logo_symbol.svg" 
+              src="./Logo_symbol.svg" 
               alt="GuestMe чаевые" 
               width={32}
               height={32}
