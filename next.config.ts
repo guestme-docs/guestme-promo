@@ -17,14 +17,15 @@ const nextConfig: NextConfig = {
   // Отключаем все серверные функции для статического экспорта
   experimental: {
     optimizePackageImports: ['@tabler/icons-react', '@mui/material'],
-    // Отключаем Server Components для статического экспорта
-    serverComponentsExternalPackages: [],
-    // Отключаем RSC для статического экспорта
-    serverActions: false,
-    // Отключаем все серверные функции
-    appDir: true,
-    serverComponents: false,
   },
+  
+  // Отключаем Server Actions для статического экспорта
+  serverActions: {
+    allowedOrigins: [],
+  },
+  
+  // Отключаем внешние пакеты для Server Components
+  serverExternalPackages: [],
   
   
   // Отключаем строгие проверки для ускорения сборки
