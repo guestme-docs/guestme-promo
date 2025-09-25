@@ -268,7 +268,7 @@ export default function PromotionsPage() {
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <CreateButton 
                 component={Link}
-                href="/supplier/promotions/new"
+                href="./supplier/promotions/new/"
               >
                 Создать акцию
               </CreateButton>

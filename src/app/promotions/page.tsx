@@ -267,7 +267,7 @@ export default function PromotionsPage() {
             {/* Create Button - максимально вправо */}
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <CreateButton>
-                <Link href="/promotions/new" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link href="./promotions/new/" style={{ textDecoration: 'none', color: 'inherit' }}>
                   Создать акцию
                 </Link>
               </CreateButton>
