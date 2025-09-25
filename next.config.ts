@@ -14,9 +14,16 @@ const nextConfig: NextConfig = {
   basePath: isGithubPages ? '/guestme-promo' : '',
   assetPrefix: isGithubPages ? '/guestme-promo/' : '',
   
-  // Оптимизации для ускорения загрузки
+  // Отключаем все серверные функции для статического экспорта
   experimental: {
     optimizePackageImports: ['@tabler/icons-react', '@mui/material'],
+    // Отключаем Server Components для статического экспорта
+    serverComponentsExternalPackages: [],
+    // Отключаем RSC для статического экспорта
+    serverActions: false,
+    // Отключаем все серверные функции
+    appDir: true,
+    serverComponents: false,
   },
   
   
@@ -44,6 +51,15 @@ const nextConfig: NextConfig = {
   
   // Оптимизация бандла
   webpack: (config, { dev, isServer }) => {
+    // Отключаем RSC для статического экспорта
+    if (isGithubPages) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'react-server-dom-webpack/server': false,
+        'react-server-dom-webpack/client': false,
+      };
+    }
+    
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
