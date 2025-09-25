@@ -11,7 +11,7 @@ export default function EditPromotionClient({ params }: { params: { id: string }
 
   useEffect(() => {
     if (!item) {
-      router.push('/promotions');
+      router.push('./promotions/');
     }
   }, [item, router]);
 
