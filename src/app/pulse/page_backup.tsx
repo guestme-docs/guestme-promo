@@ -10,7 +10,7 @@ import TipsNowUIStatCard from '@/components/TipsNowUIStatCard';
 import TipsEventCard from '@/components/TipsEventCard';
 import TipsEventFilters from '@/components/TipsEventFilters';
 import TipsPromotionCard from '@/components/TipsPromotionCard';
-import { tipsData, getWaiterPromotions, getWaiterPromotionStats } from '@/mocks/tips-data';
+import { tipsData, getWaiterPromotions } from '@/mocks/tips-data';
 import { EventType } from '@/mocks/tips-types';
 
 export default function TipsDashboard() {
@@ -153,7 +153,7 @@ export default function TipsDashboard() {
       </div>
 
       {/* KPI карточки - первый ряд */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Чаевые (1/4 ширины) */}
         <TipsNowUIStatCard
           title="Чаевые"
@@ -245,67 +245,59 @@ export default function TipsDashboard() {
         {/* Все акции в одной сетке */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Активные акции */}
-          {waiterPromotions.active.map((promotion) => {
-            const stats = getWaiterPromotionStats("w1", promotion.id);
-            return (
-              <TipsPromotionCard
-                key={promotion.id}
-                id={promotion.id}
-                name={promotion.name}
-                status={promotion.status}
-                bannerUrl={promotion.bannerUrl || ''}
-                startsAt={promotion.startsAt}
-                endsAt={promotion.endsAt}
-                salesCount={stats.salesCount}
-                motivationToPay={stats.motivationToPay}
-                onClick={() => {
-                  router.push(`/tips/promotions/${promotion.id}/`);
-                }}
-              />
-            );
-          })}
+          {waiterPromotions.active.map((promotion) => (
+            <TipsPromotionCard
+              key={promotion.id}
+              id={promotion.id}
+              name={promotion.name}
+              status={promotion.status}
+              bannerUrl={promotion.bannerUrl}
+              startsAt={promotion.startsAt}
+              endsAt={promotion.endsAt}
+              isParticipating={true}
+              onClick={() => {
+                router.push(`/pulse/promotions/${promotion.id}/`);
+              }}
+            />
+          ))}
           
           {/* Запланированные акции (участвует) */}
-          {waiterPromotions.scheduled.map((promotion) => {
-            const stats = getWaiterPromotionStats("w1", promotion.id);
-            return (
-              <TipsPromotionCard
-                key={promotion.id}
-                id={promotion.id}
-                name={promotion.name}
-                status={promotion.status}
-                bannerUrl={promotion.bannerUrl || ''}
-                startsAt={promotion.startsAt}
-                endsAt={promotion.endsAt}
-                salesCount={stats.salesCount}
-                motivationToPay={stats.motivationToPay}
-                onClick={() => {
-                  router.push(`/tips/promotions/${promotion.id}/`);
-                }}
-              />
-            );
-          })}
+          {waiterPromotions.scheduled.map((promotion) => (
+            <TipsPromotionCard
+              key={promotion.id}
+              id={promotion.id}
+              name={promotion.name}
+              status={promotion.status}
+              bannerUrl={promotion.bannerUrl}
+              startsAt={promotion.startsAt}
+              endsAt={promotion.endsAt}
+              isParticipating={true}
+              onClick={() => {
+                router.push(`/pulse/promotions/${promotion.id}/`);
+              }}
+            />
+          ))}
           
           {/* Доступные акции (не участвует) */}
-          {waiterPromotions.available.map((promotion) => {
-            const stats = getWaiterPromotionStats("w1", promotion.id);
-            return (
-              <TipsPromotionCard
-                key={promotion.id}
-                id={promotion.id}
-                name={promotion.name}
-                status={promotion.status}
-                bannerUrl={promotion.bannerUrl || ''}
-                startsAt={promotion.startsAt}
-                endsAt={promotion.endsAt}
-                salesCount={stats.salesCount}
-                motivationToPay={stats.motivationToPay}
-                onClick={() => {
-                  router.push(`/tips/promotions/${promotion.id}/`);
-                }}
-              />
-            );
-          })}
+          {waiterPromotions.available.map((promotion) => (
+            <TipsPromotionCard
+              key={promotion.id}
+              id={promotion.id}
+              name={promotion.name}
+              status={promotion.status}
+              bannerUrl={promotion.bannerUrl}
+              startsAt={promotion.startsAt}
+              endsAt={promotion.endsAt}
+              isParticipating={false}
+              onClick={() => {
+                router.push(`/pulse/promotions/${promotion.id}/`);
+              }}
+              onJoin={() => {
+                console.log('Присоединение к акции:', promotion.id);
+                // Здесь будет логика присоединения к акции
+              }}
+            />
+          ))}
         </div>
 
         {/* Если нет акций */}

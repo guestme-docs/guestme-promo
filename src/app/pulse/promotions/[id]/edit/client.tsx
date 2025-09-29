@@ -11,7 +11,7 @@ export default function EditTipsPromotionClient({ params }: { params: { id: stri
 
   useEffect(() => {
     if (!item) {
-      router.push('./tips/promotions/');
+      router.push('./pulse/promotions/');
     }
   }, [item, router]);
 

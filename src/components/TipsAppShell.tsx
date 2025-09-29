@@ -41,21 +41,21 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
   }
 
   const navItems = [
-    { href: "/tips/", label: "Дашборд" },
+    { href: "/pulse/", label: "Дашборд" },
     { label: "Финансы" },
   ];
 
   // Функция для получения заголовка страницы
   const getPageTitle = () => {
     switch (pathname) {
-      case "/tips":
+      case "/pulse":
         return "Дашборд";
-      case "/tips/finance":
+      case "/pulse/finance":
         return "Финансы";
-      case "/tips/profile":
+      case "/pulse/profile":
         return "Профиль";
       default:
-        return "GuestMe чаевые";
+        return "GuestMe Pulse";
     }
   };
 
@@ -72,7 +72,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
           padding: 'var(--tips-spacing-xl)', 
           borderColor: 'var(--border)' 
         }}>
-          <Link href="/tips/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
+          <Link href="/pulse/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
             <img 
               src={process.env.GITHUB_ACTIONS === 'true' ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
               alt="GuestMe Pulse" 
