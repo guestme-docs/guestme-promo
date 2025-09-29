@@ -22,12 +22,12 @@ export default function AppShell({ children }: AppShellProps) {
         // Предзагружаем страницы промоакций и продаж
         const link1 = document.createElement('link');
         link1.rel = 'prefetch';
-        link1.href = '/guestme-promo/supplier/promotions/';
+        link1.href = '/supplier/promotions/';
         document.head.appendChild(link1);
 
         const link2 = document.createElement('link');
         link2.rel = 'prefetch';
-        link2.href = '/guestme-promo/supplier/sales/';
+        link2.href = '/supplier/sales/';
         document.head.appendChild(link2);
       }
     };
@@ -38,10 +38,10 @@ export default function AppShell({ children }: AppShellProps) {
   }, [pathname]);
 
   const navItems = [
-    { href: "/guestme-promo/supplier/", label: "Дашборд" },
-    { href: "/guestme-promo/supplier/promotions/", label: "Акции" },
-    { href: "/guestme-promo/supplier/sales/", label: "Продажи" },
-    { href: "/guestme-promo/supplier/restaurants/", label: "Рестораны" },
+    { href: "/supplier/", label: "Дашборд" },
+    { href: "/supplier/promotions/", label: "Акции" },
+    { href: "/supplier/sales/", label: "Продажи" },
+    { href: "/supplier/restaurants/", label: "Рестораны" },
   ];
 
   // Функция для получения заголовка страницы
@@ -75,7 +75,7 @@ export default function AppShell({ children }: AppShellProps) {
       <aside className={`w-64 flex flex-col border-r ${isDark ? "bg-[#111111] border-[#2a2a2a]" : "bg-white border-gray-200"}`}>
         {/* Logo */}
         <div className={`p-6 border-b ${isDark ? "border-[#2a2a2a]" : "border-gray-200"}`}>
-          <Link href="/guestme-promo/supplier/" className={`flex items-center gap-3 ${isDark ? "text-white" : "text-gray-900"}`}>
+          <Link href="/supplier/" className={`flex items-center gap-3 ${isDark ? "text-white" : "text-gray-900"}`}>
             <img 
               src={typeof window !== 'undefined' && window.location.hostname === 'guestme-docs.github.io' ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
               alt="GuestMe Promo" 

@@ -41,7 +41,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
   }
 
   const navItems = [
-    { href: "/guestme-promo/pulse/", label: "Дашборд" },
+    { href: "/pulse/", label: "Дашборд" },
     { label: "Финансы" },
   ];
 
@@ -72,7 +72,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
           padding: 'var(--tips-spacing-xl)', 
           borderColor: 'var(--border)' 
         }}>
-          <Link href="/guestme-promo/pulse/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
+          <Link href="/pulse/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
             <img 
               src={typeof window !== 'undefined' && window.location.hostname === 'guestme-docs.github.io' ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
               alt="GuestMe Pulse" 
