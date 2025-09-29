@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   distDir: 'dist',
   
-  // Базовый путь для GitHub Pages (всегда активен в production)
-  basePath: process.env.NODE_ENV === 'production' ? '/guestme-promo' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/guestme-promo/' : '',
+  // Базовый путь для GitHub Pages (активен при GITHUB_ACTIONS=true)
+  basePath: process.env.GITHUB_ACTIONS === 'true' ? '/guestme-promo' : '',
+  assetPrefix: process.env.GITHUB_ACTIONS === 'true' ? '/guestme-promo/' : '',
   
   // Отключаем строгие проверки для ускорения сборки
   typescript: {
