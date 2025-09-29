@@ -136,7 +136,7 @@ export const promotions: Promotion[] = [
     status: "active",
     startsAt: "2025-08-30T00:00:00.000Z", // началась 10 дней назад (30 августа)
     endsAt: "2025-09-30T00:00:00.000Z", // закончится через 20 дней (30 сентября)
-    bannerUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://images.unsplash.com/photo-1570598912132-0ba1dc952b7d?fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y29ja3RhaWx8ZW58MHx8MHx8fDA%3D&ixlib=rb-4.1.0&q=60&w=3000",
     restaurants: ["r1", "r2", "r3", "r4", "r5"], // 5 ресторанов
     motivations: [
       { productId: "p1", type: "fixed", value: 180 }, // Виски 12 лет - 180 руб
@@ -189,7 +189,7 @@ export const promotions: Promotion[] = [
     status: "active",
     startsAt: "2025-09-04T00:00:00.000Z", // началась 5 дней назад (4 сентября)
     endsAt: "2025-10-04T00:00:00.000Z", // закончится через 25 дней (4 октября)
-    bannerUrl: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://images.unsplash.com/photo-1529264978834-666a0e99f884?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r6", "r7", "r8"], // 3 ресторана
     motivations: [
       { productId: "p1", type: "fixed", value: 200 }, // Виски 12 лет - 200 руб
@@ -231,7 +231,7 @@ export const promotions: Promotion[] = [
     status: "active",
     startsAt: "2025-08-20T00:00:00.000Z", // началась 20 дней назад (20 августа)
     endsAt: "2025-09-20T00:00:00.000Z", // закончится через 10 дней (20 сентября)
-    bannerUrl: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://images.unsplash.com/photo-1712247453603-1218368e38f6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r9", "r10"], // 2 ресторана
     motivations: [
       { productId: "p4", type: "fixed", value: 160 }, // Ром Карибский - 160 руб
@@ -317,7 +317,7 @@ export const promotions: Promotion[] = [
     status: "scheduled",
     startsAt: "2025-09-19T00:00:00.000Z", // начнется через 10 дней (19 сентября)
     endsAt: "2025-10-19T00:00:00.000Z", // закончится через 40 дней (19 октября)
-    bannerUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://plus.unsplash.com/premium_photo-1698007654461-687358034ec0?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r1", "r3", "r5", "r7", "r9"], // 5 ресторанов
     motivations: [
       { productId: "p1", type: "fixed", value: 200 }, // Виски 12 лет - 200 руб
