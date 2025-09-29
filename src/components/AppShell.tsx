@@ -77,7 +77,7 @@ export default function AppShell({ children }: AppShellProps) {
         <div className={`p-6 border-b ${isDark ? "border-[#2a2a2a]" : "border-gray-200"}`}>
           <Link href="/supplier/" className={`flex items-center gap-3 ${isDark ? "text-white" : "text-gray-900"}`}>
             <img 
-              src={process.env.GITHUB_ACTIONS === 'true' ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
+              src={typeof window !== 'undefined' && window.location.hostname === 'guestme-docs.github.io' ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
               alt="GuestMe Promo" 
               width={32}
               height={32}
