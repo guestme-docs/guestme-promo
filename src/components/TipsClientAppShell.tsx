@@ -8,7 +8,7 @@ const TipsAppShell = dynamic(() => import("./TipsAppShell"), {
     <div className="min-h-screen bg-white flex">
       <div className="w-64 bg-white border-r border-black/[.08] flex flex-col">
         <div className="p-6 border-b border-black/[.08]">
-          <div className="text-xl font-bold text-black">GuestMe чаевые</div>
+          <div className="text-xl font-bold text-black">GuestMe Pulse</div>
           <div className="text-sm text-black/60 mt-1">Личный кабинет официанта</div>
         </div>
         <div className="flex-1 p-4">

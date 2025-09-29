@@ -75,7 +75,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
           <Link href="/tips/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
             <img 
               src={process.env.NODE_ENV === 'production' ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
-              alt="GuestMe чаевые" 
+              alt="GuestMe Pulse" 
               width={32}
               height={32}
               style={{
@@ -85,7 +85,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
               }}
             />
             <div>
-              <div className="text-xl font-bold">GuestMe чаевые</div>
+              <div className="text-xl font-bold">GuestMe Pulse</div>
               <div className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
                 Личный кабинет официанта
               </div>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GuestMe чаевые | Портал официанта",
+  title: "GuestMe Pulse | Портал официанта",
   description: "Личный кабинет официанта для управления чаевыми и отзывами",
 };
 

@@ -1,17 +1,14 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === 'production';
-const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
-
 const nextConfig: NextConfig = {
   // Настройки для GitHub Pages
   output: 'export',
   trailingSlash: true,
   distDir: 'dist',
   
-  // Базовый путь для GitHub Pages
-  basePath: isGithubPages ? '/guestme-promo' : '',
-  assetPrefix: isGithubPages ? '/guestme-promo/' : '',
+  // Базовый путь для GitHub Pages (всегда активен в production)
+  basePath: process.env.NODE_ENV === 'production' ? '/guestme-promo' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/guestme-promo/' : '',
   
   // Отключаем строгие проверки для ускорения сборки
   typescript: {
