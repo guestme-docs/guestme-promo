@@ -78,52 +78,52 @@ export const products: Product[] = [
   { 
     id: "p1", 
     name: "Виски 12 лет",
-    imageUrl: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1571104508999-893933ded431?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p2", 
     name: "Джин Премиум",
-    imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1453824979084-c8fd42932378?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p3", 
     name: "Вермут Классик",
-    imageUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1564957468535-e8e51b0d2f56?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p4", 
     name: "Ром Карибский",
-    imageUrl: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p5", 
     name: "Текила Премиум",
-    imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1608635360956-5ebde7952ed6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p6", 
     name: "Коньяк VSOP",
-    imageUrl: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://plus.unsplash.com/premium_photo-1682125792755-40f2c999e884?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p7", 
     name: "Водка Премиум",
-    imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1677159943266-7090e47db05e?q=80&w=1186&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p8", 
     name: "Ликер Амаретто",
-    imageUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://alcomag.ua/upload/medialibrary/f83/f83392a24471b1c6fff36952b5c9c136.jpg"
   },
   { 
     id: "p9", 
     name: "Шампанское Брют",
-    imageUrl: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1580657274234-7339717f4541?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   { 
     id: "p10", 
     name: "Пиво Крафтовое",
-    imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&h=400&fit=crop&crop=center"
+    imageUrl: "https://images.unsplash.com/photo-1532635135-630750614081?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
 ];
 
@@ -155,7 +155,7 @@ export const promotions: Promotion[] = [
         productId: "p1",
         name: "Виски 12 лет",
         description: "Премиальный шотландский виски с выдержкой 12 лет, насыщенный аромат дуба и ванили",
-        imageUrl: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1571104508999-893933ded431?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(180), // 180 руб
         waiterShare: 60,
         adminShare: 10,
@@ -165,7 +165,7 @@ export const promotions: Promotion[] = [
         productId: "p2",
         name: "Джин Премиум",
         description: "Лондонский джин премиум-класса с ботаническими нотами можжевельника и цитрусов",
-        imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1453824979084-c8fd42932378?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(150), // 150 руб
         waiterShare: 60,
         adminShare: 10,
@@ -175,7 +175,7 @@ export const promotions: Promotion[] = [
         productId: "p3",
         name: "Вермут Классик",
         description: "Итальянский вермут с травяными экстрактами и легкой горчинкой",
-        imageUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1564957468535-e8e51b0d2f56?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(120), // 120 руб
         waiterShare: 60,
         adminShare: 10,
@@ -207,7 +207,7 @@ export const promotions: Promotion[] = [
         productId: "p1",
         name: "Виски 12 лет",
         description: "Премиальный шотландский виски с выдержкой 12 лет, насыщенный аромат дуба и ванили",
-        imageUrl: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1571104508999-893933ded431?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(200), // 200 руб
         waiterShare: 60,
         adminShare: 10,
@@ -217,7 +217,7 @@ export const promotions: Promotion[] = [
         productId: "p6",
         name: "Коньяк VSOP",
         description: "Французский коньяк VSOP с выдержкой 4 года, элегантный вкус с нотами ванили и дуба",
-        imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://plus.unsplash.com/premium_photo-1682125792755-40f2c999e884?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(180), // 180 руб
         waiterShare: 60,
         adminShare: 10,
@@ -249,7 +249,7 @@ export const promotions: Promotion[] = [
         productId: "p4",
         name: "Ром Карибский",
         description: "Традиционный карибский ром с нотами тростникового сахара и специй",
-        imageUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(160), // 160 руб
         waiterShare: 60,
         adminShare: 10,
@@ -259,7 +259,7 @@ export const promotions: Promotion[] = [
         productId: "p5",
         name: "Текила Премиум",
         description: "Мексиканская текила премиум-класса из голубой агавы с чистым вкусом",
-        imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1608635360956-5ebde7952ed6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(130), // 130 руб
         waiterShare: 60,
         adminShare: 10,
@@ -291,7 +291,7 @@ export const promotions: Promotion[] = [
         productId: "p2",
         name: "Джин Премиум",
         description: "Лондонский джин премиум-класса с ботаническими нотами можжевельника и цитрусов",
-        imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1453824979084-c8fd42932378?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(140),
         waiterShare: 60,
         adminShare: 10,
@@ -301,7 +301,7 @@ export const promotions: Promotion[] = [
         productId: "p4",
         name: "Ром Карибский",
         description: "Темный ром с Карибских островов с нотами ванили и корицы",
-        imageUrl: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=300&fit=crop&crop=center",
+        imageUrl: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         motivationPerSale: rub(150),
         waiterShare: 60,
         adminShare: 10,
