@@ -74,7 +74,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
         }}>
           <Link href="/pulse/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
             <img 
-              src={typeof window !== 'undefined' && window.location.hostname === 'guestme-docs.github.io' ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
+              src={typeof window !== 'undefined' && window.location.hostname.includes('github.io') ? '/guestme-promo/Logo_symbol.svg' : '/Logo_symbol.svg'} 
               alt="GuestMe Pulse" 
               width={32}
               height={32}
