@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+const basePath = isGithubPages ? '/guestme-promo' : '';
+
 const nextConfig: NextConfig = {
   // Настройки для GitHub Pages
   output: 'export',
@@ -7,8 +10,13 @@ const nextConfig: NextConfig = {
   distDir: 'dist',
   
   // Базовый путь для GitHub Pages (активен при GITHUB_ACTIONS=true)
-  basePath: process.env.GITHUB_ACTIONS === 'true' ? '/guestme-promo' : '',
-  assetPrefix: process.env.GITHUB_ACTIONS === 'true' ? '/guestme-promo/' : '',
+  basePath: basePath,
+  assetPrefix: isGithubPages ? '/guestme-promo/' : '',
+  
+  // Переменные окружения для клиента
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   
   // Отключаем строгие проверки для ускорения сборки
   typescript: {

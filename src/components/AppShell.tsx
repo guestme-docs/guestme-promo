@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTheme } from './ThemeProvider';
 import ThemeToggle from './ThemeToggle';
 import { useEffect } from 'react';
+import { assetPath } from '@/lib/asset-path';
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -77,7 +78,7 @@ export default function AppShell({ children }: AppShellProps) {
         <div className={`p-6 border-b ${isDark ? "border-[#2a2a2a]" : "border-gray-200"}`}>
           <Link href="/supplier/" className={`flex items-center gap-3 ${isDark ? "text-white" : "text-gray-900"}`}>
             <img 
-              src="/Logo_symbol.svg" 
+              src={assetPath('/Logo_symbol.svg')} 
               alt="GuestMe Promo" 
               width={32}
               height={32}

@@ -8,6 +8,7 @@ import ThemeToggle from './ThemeToggle';
 import { Avatar, Chip, IconButton } from '@mui/material';
 import { IconBell, IconCurrencyDollar } from '@tabler/icons-react';
 import { tipsData } from '@/mocks/tips-data';
+import { assetPath } from '@/lib/asset-path';
 
 type TipsAppShellProps = {
   children: React.ReactNode;
@@ -74,7 +75,7 @@ export default function TipsAppShell({ children }: TipsAppShellProps) {
         }}>
           <Link href="/pulse/" className="flex items-center gap-3" style={{ color: 'var(--foreground)' }}>
             <img 
-              src="/Logo_symbol.svg" 
+              src={assetPath('/Logo_symbol.svg')} 
               alt="GuestMe Pulse" 
               width={32}
               height={32}
