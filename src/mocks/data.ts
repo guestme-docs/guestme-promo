@@ -273,7 +273,7 @@ export const promotions: Promotion[] = [
     status: "finished",
     startsAt: "2025-07-01T00:00:00.000Z", // началась 70 дней назад (1 июля)
     endsAt: "2025-07-31T00:00:00.000Z", // закончилась 40 дней назад (31 июля)
-    bannerUrl: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://images.unsplash.com/photo-1654722658395-b97e84a46152?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r1", "r2", "r3"], // 3 ресторана
     motivations: [
       { productId: "p2", type: "fixed", value: 140 }, // Джин Премиум - 140 руб
@@ -355,7 +355,7 @@ export const promotions: Promotion[] = [
     status: "finished",
     startsAt: "2025-06-01T00:00:00.000Z", // 1 июня 2025
     endsAt: "2025-07-01T00:00:00.000Z", // 1 июля 2025 (месяц длительности)
-    bannerUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://images.unsplash.com/photo-1496318447583-f524534e9ce1?q=80&w=1234&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r1", "r2", "r3"], // 3 ресторана
     motivations: [
       { productId: "p1", type: "fixed", value: 160 }, // Виски 12 лет - 160 руб
@@ -373,7 +373,7 @@ export const promotions: Promotion[] = [
     status: "finished",
     startsAt: "2025-04-15T00:00:00.000Z", // 15 апреля 2025
     endsAt: "2025-05-15T00:00:00.000Z", // 15 мая 2025 (месяц длительности)
-    bannerUrl: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://images.unsplash.com/photo-1742973893204-29f180963a17?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r4", "r5", "r6", "r7"], // 4 ресторана
     motivations: [
       { productId: "p4", type: "fixed", value: 150 }, // Ром Карибский - 150 руб
@@ -391,7 +391,7 @@ export const promotions: Promotion[] = [
     status: "finished",
     startsAt: "2025-01-10T00:00:00.000Z", // 10 января 2025
     endsAt: "2025-02-10T00:00:00.000Z", // 10 февраля 2025 (месяц длительности)
-    bannerUrl: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://plus.unsplash.com/premium_photo-1695945389334-cc106a56e9b4?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r8", "r9", "r10"], // 3 ресторана
     motivations: [
       { productId: "p7", type: "fixed", value: 180 }, // Водка Премиум - 180 руб
@@ -409,7 +409,7 @@ export const promotions: Promotion[] = [
     status: "finished",
     startsAt: "2024-12-01T00:00:00.000Z", // 1 декабря 2024
     endsAt: "2025-01-01T00:00:00.000Z", // 1 января 2025 (месяц длительности)
-    bannerUrl: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://plus.unsplash.com/premium_photo-1697015611955-7c9f281f1564?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r1", "r3", "r5", "r7", "r9"], // 5 ресторанов
     motivations: [
       { productId: "p1", type: "fixed", value: 200 }, // Виски 12 лет - 200 руб
@@ -428,7 +428,7 @@ export const promotions: Promotion[] = [
     status: "finished",
     startsAt: "2024-09-01T00:00:00.000Z", // 1 сентября 2024
     endsAt: "2024-10-01T00:00:00.000Z", // 1 октября 2024 (месяц длительности)
-    bannerUrl: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=200&fit=crop&crop=center",
+    bannerUrl: "https://images.unsplash.com/photo-1759145858937-0f730a20265f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     restaurants: ["r2", "r4", "r6", "r8", "r10"], // 5 ресторанов
     motivations: [
       { productId: "p2", type: "fixed", value: 150 }, // Джин Премиум - 150 руб
